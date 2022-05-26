@@ -16,7 +16,7 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'Welcome to Zenika Ecommerces'`, () => {
+  it('should have as title "Welcome to Zenika Ecommerces"', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('Welcome to Zenika Ecommerces');
