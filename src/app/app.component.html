@@ -4,7 +4,7 @@
 
   <header class="p-5 mb-4 bg-light rounded-3">
     <h1>Welcome to Zenika Ecommerces</h1>
-    <p>Your basket amounts to total €</p>
+    <p>Your basket amounts to {{ total }} €</p>
     <p><a class="btn btn-primary btn-large">See my basket</a></p>
   </header>
 
@@ -17,56 +17,19 @@
   </div>
   <div class="row text-center">
     <div class="col-md-3 col-sm-6 product-item">
-      <div class="card h-100">
-        <img src="https://s3.eu-central-1.amazonaws.com/balibart-s3/Products/5acf344514006a7fe670e2eb/Mockups/front.png"
-          class="card-img-top" alt="">
-        <div class="card-body">
-          <h3 class="card-title">Men Sweatshirt - 39$</h3>
-          <p class="card-text">C0D1NG_TH3_W0RLD BIO HOODIE - MEN</p>
-        </div>
-        <div class="card-body">
-          <button class="btn btn-primary">Add to basket</button>
-        </div>
-      </div>
+      <app-product [product]="products[0]" (addToBasket)="updatePrice($event)"></app-product>
     </div>
+
     <div class="col-md-3 col-sm-6 product-item">
-      <div class="card h-100">
-        <img src="https://s3.eu-central-1.amazonaws.com/balibart-s3/Products/5b2911e4ab33424aec592bd6/Mockups/front.png"
-          class="card-img-top" alt="">
-        <div class="card-body">
-          <h3 class="card-title">Men T-Shirt - 19$</h3>
-          <p>BIO T-SHIRT WITH CREWNECK - MEN.</p>
-        </div>
-        <div class="card-body">
-          <button class="btn btn-primary">Add to basket</button>
-        </div>
-      </div>
+      <app-product [product]="products[1]" (addToBasket)="updatePrice($event)"></app-product>
     </div>
+
     <div class="col-md-3 col-sm-6 product-item">
-      <div class="card h-100">
-        <img src="https://s3.eu-central-1.amazonaws.com/balibart-s3/Products/5b290d26ab33424aec592bd4/Mockups/front.png"
-          class="card-img-top" alt="">
-        <div class="card-body">
-          <h3 class="card-title">T-Shirt women - 30$</h3>
-          <p class="card-text">BIO T-SHIRT WITH CREWNECK - WOMEN.</p>
-        </div>
-        <div class="card-body">
-          <button class="btn btn-primary">Add to basket</button>
-        </div>
-      </div>
+      <app-product [product]="products[2]" (addToBasket)="updatePrice($event)"></app-product>
     </div>
+
     <div class="col-md-3 col-sm-6 product-item">
-      <div class="card h-100">
-        <img src="https://s3.eu-central-1.amazonaws.com/balibart-s3/Products/5acf160814006a7fe670e2dd/Mockups/front.png"
-          class="card-img-top" alt="">
-        <div class="card-body">
-          <h3 class="card-title">Tote bag - 12,50$</h3>
-          <p class="card-text">C0D1NG_TH3_W0RLD, BIO TOTE BAG.</p>
-        </div>
-        <div class="card-body">
-          <button class="btn btn-primary">Add to basket</button>
-        </div>
-      </div>
+      <app-product [product]="products[3]" (addToBasket)="updatePrice($event)"></app-product>
     </div>
   </div>
 
