@@ -4,7 +4,7 @@ import { Product } from './product.types';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent {
   @Input()
@@ -12,8 +12,6 @@ export class ProductComponent {
 
   @Output()
   addToBasket = new EventEmitter<number>();
-
-  constructor() { }
 
   triggerAddToBasket() {
     this.addToBasket.emit(this.product.price);
