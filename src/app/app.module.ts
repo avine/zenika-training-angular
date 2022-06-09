@@ -5,7 +5,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { APP_TITLE } from './app.token';
-import { CustomerService } from './customer/customer.service';
 import { MenuComponent } from './menu/menu.component';
 import { ProductComponent } from './product/product.component';
 

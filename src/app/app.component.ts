@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 
 import { APP_TITLE } from './app.token';
-import { CustomerService } from './customer/customer.service';
+import { BasketService } from './basket/basket.service';
 import { ProductService } from './product/product.service';
 import { Product } from './product/product.types';
 
@@ -11,29 +11,28 @@ import { Product } from './product/product.types';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  products: Product[] = [];
+  products$ = this.productService.products$;
 
-  basket: Product[] = [];
+  total$ = this.basketService.total$;
 
   constructor(
     private productService: ProductService,
-    public customerService: CustomerService,
+    private basketService: BasketService,
     @Inject(APP_TITLE) public appTitle: string
   ) {}
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe((products) => {
-      this.products = products;
-    });
-
-    this.customerService.getBasket().subscribe((basket) => {
-      this.basket = basket;
-    });
+    this.productService.fetchProducts().subscribe();
+    this.basketService.fetchBasket().subscribe();
   }
 
   addToBasket(product: Product) {
-    this.customerService.addProduct(product).subscribe(() => {
+    this.basketService.addProduct(product).subscribe(() => {
+      /* Ici on donne au Front l'intelligence de diminuer le stock du produit. */
       this.productService.decreaseStock(product);
+
+      /* Là, on demande au Back de nous renvoyer la donnée modifiée. */
+      // this.productService.fetchProducts().subscribe();
     });
   }
 }
