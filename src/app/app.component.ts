@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { interval } from 'rxjs';
-import { BRAND_TITLE } from './brand-title.token';
+
+import { APP_TITLE } from './app.token';
 import { CustomerService } from './customer/customer.service';
 import { ProductService } from './product/product.service';
 import { Product } from './product/product.types';
@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   constructor(
     private productService: ProductService,
     public customerService: CustomerService,
-    @Inject(BRAND_TITLE) public title: string
+    @Inject(APP_TITLE) public appTitle: string
   ) {}
 
   ngOnInit(): void {

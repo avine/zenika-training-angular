@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { interval, Subscription } from 'rxjs';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
 import { Product } from './product.types';
 
 @Component({
@@ -7,29 +7,12 @@ import { Product } from './product.types';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss'],
 })
-export class ProductComponent implements OnInit, OnDestroy {
-  myinterval = 0;
+export class ProductComponent {
+  @Input() product!: Product;
 
-  private subscription!: Subscription;
+  @Output() addToBasket = new EventEmitter<Product>();
 
-  ngOnInit(): void {
-    this.subscription = interval(2000).subscribe((n) => {
-      this.myinterval = n;
-      // console.log(this.product?.title);
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.subscription?.unsubscribe();
-  }
-
-  @Input()
-  product!: Product;
-
-  @Output()
-  addToBasket = new EventEmitter<Product>();
-
-  triggerAddToBasket() {
+  emitAddToBasket() {
     this.addToBasket.emit(this.product);
   }
 }

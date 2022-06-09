@@ -1,12 +1,17 @@
-<div class="card h-100">
+<div class="card h-100" [ngClass]="{ last: product.stock === 1 }">
   <img [src]="product.photo" class="card-img-top" alt="" />
 
   <div class="card-body">
-    <h3 class="card-title">{{ product.title | uppercase }} - {{ product.price }}$ {{ myinterval }}</h3>
+    <h3 class="card-title">{{ product.title | uppercase }} - {{ product.price }}$</h3>
+
     <p class="card-text">{{ product.description }}</p>
   </div>
 
   <div class="card-body">
-    <button class="btn btn-primary" (click)="triggerAddToBasket()">Add to basket ({{ product.stock }})</button>
+    <button class="btn btn-primary" (click)="emitAddToBasket()">Add to basket</button>
+
+    <br />
+
+    ({{ product.stock }} item(s) left)
   </div>
 </div>

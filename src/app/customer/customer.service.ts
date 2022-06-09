@@ -1,10 +1,13 @@
+import { tap } from 'rxjs';
+
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { tap } from 'rxjs';
-import { ProductService } from '../product/product.service';
+
 import { Product } from '../product/product.types';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class CustomerService {
   basket: Product[] = [];
 
@@ -25,9 +28,6 @@ export class CustomerService {
   }
 
   getTotal() {
-    //let total = 0;
-    //return this.basket.forEach(({ price }) => (total += price));
-
     return this.basket.reduce((total, { price }) => total + price, 0);
   }
 }

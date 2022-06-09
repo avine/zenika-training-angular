@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BRAND_TITLE } from './brand-title.token';
+import { APP_TITLE } from './app.token';
 import { CustomerService } from './customer/customer.service';
 import { MenuComponent } from './menu/menu.component';
 import { ProductComponent } from './product/product.component';
@@ -13,9 +13,8 @@ import { ProductComponent } from './product/product.component';
   declarations: [AppComponent, MenuComponent, ProductComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [
-    CustomerService,
     {
-      provide: BRAND_TITLE,
+      provide: APP_TITLE,
       useValue: 'Welcome to Zenika Ecommerces!',
     },
   ],
