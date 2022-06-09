@@ -2,8 +2,8 @@
 
 <div class="container">
   <header class="p-5 mb-4 bg-light rounded-3">
-    <h1>Welcome to Zenika Ecommerces</h1>
-    <p>Your basket amounts to {{ total }} €</p>
+    <h1>{{ title }} {{ mydate | date | lowercase }}</h1>
+    <p>Your basket amounts to {{ customerService.getTotal() | currency: 'EUR':'symbol' }}</p>
     <p><a class="btn btn-primary btn-large">See my basket</a></p>
   </header>
 
@@ -19,11 +19,11 @@
     <ng-container *ngFor="let product of products">
       <div
         *ngIf="product.stock > 0"
-        [ngClass]="{ 'thumbnail': product.stock === 1 }"
+        [ngClass]="{ thumbnail: product.stock === 1 }"
         class="col-md-3 col-sm-6 product-item"
       >
-        <app-product [product]="product" (addToBasket)="updatePrice($event)"></app-product>
-      </div>  
+        <app-product [product]="product" (addToBasket)="addToBasket($event)"></app-product>
+      </div>
     </ng-container>
   </div>
 
