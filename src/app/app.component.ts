@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { interval } from 'rxjs';
 import { BRAND_TITLE } from './brand-title.token';
 import { CustomerService } from './customer/customer.service';
 import { ProductService } from './product/product.service';
@@ -12,7 +13,7 @@ import { Product } from './product/product.types';
 export class AppComponent implements OnInit {
   products: Product[] = [];
 
-  mydate = new Date();
+  basket: Product[] = [];
 
   constructor(
     private productService: ProductService,
@@ -21,11 +22,18 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.products = this.productService.getProducts();
+    this.productService.getProducts().subscribe((products) => {
+      this.products = products;
+    });
+
+    this.customerService.getBasket().subscribe((basket) => {
+      this.basket = basket;
+    });
   }
 
   addToBasket(product: Product) {
-    this.productService.decreaseStock(product);
-    this.customerService.addProduct(product);
+    this.customerService.addProduct(product).subscribe(() => {
+      this.productService.decreaseStock(product);
+    });
   }
 }

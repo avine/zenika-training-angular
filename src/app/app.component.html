@@ -2,7 +2,7 @@
 
 <div class="container">
   <header class="p-5 mb-4 bg-light rounded-3">
-    <h1>{{ title }} {{ mydate | date | lowercase }}</h1>
+    <h1>{{ title }}</h1>
     <p>Your basket amounts to {{ customerService.getTotal() | currency: 'EUR':'symbol' }}</p>
     <p><a class="btn btn-primary btn-large">See my basket</a></p>
   </header>
@@ -29,5 +29,6 @@
 
   <hr />
 
+  <pre>{{ basket | json }}</pre>
   <footer>Copyright &copy; Your Website 2022</footer>
 </div>

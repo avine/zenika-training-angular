@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { interval, Subscription } from 'rxjs';
 import { Product } from './product.types';
 
 @Component({
@@ -6,7 +7,22 @@ import { Product } from './product.types';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss'],
 })
-export class ProductComponent {
+export class ProductComponent implements OnInit, OnDestroy {
+  myinterval = 0;
+
+  private subscription!: Subscription;
+
+  ngOnInit(): void {
+    this.subscription = interval(2000).subscribe((n) => {
+      this.myinterval = n;
+      // console.log(this.product?.title);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
+  }
+
   @Input()
   product!: Product;
 
