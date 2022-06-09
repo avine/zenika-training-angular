@@ -11,9 +11,9 @@ export class ProductComponent {
   product!: Product;
 
   @Output()
-  addToBasket = new EventEmitter<number>();
+  addToBasket = new EventEmitter<Product>();
 
   triggerAddToBasket() {
-    this.addToBasket.emit(this.product.price);
+    this.addToBasket.emit(this.product);
   }
 }

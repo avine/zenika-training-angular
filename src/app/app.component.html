@@ -14,22 +14,17 @@
       <h2>Last products</h2>
     </div>
   </div>
+
   <div class="row text-center">
-    <div class="col-md-3 col-sm-6 product-item">
-      <app-product [product]="products[0]" (addToBasket)="updatePrice($event)"></app-product>
-    </div>
-
-    <div class="col-md-3 col-sm-6 product-item">
-      <app-product [product]="products[1]" (addToBasket)="updatePrice($event)"></app-product>
-    </div>
-
-    <div class="col-md-3 col-sm-6 product-item">
-      <app-product [product]="products[2]" (addToBasket)="updatePrice($event)"></app-product>
-    </div>
-
-    <div class="col-md-3 col-sm-6 product-item">
-      <app-product [product]="products[3]" (addToBasket)="updatePrice($event)"></app-product>
-    </div>
+    <ng-container *ngFor="let product of products">
+      <div
+        *ngIf="product.stock > 0"
+        [ngClass]="{ 'thumbnail': product.stock === 1 }"
+        class="col-md-3 col-sm-6 product-item"
+      >
+        <app-product [product]="product" (addToBasket)="updatePrice($event)"></app-product>
+      </div>  
+    </ng-container>
   </div>
 
   <hr />
