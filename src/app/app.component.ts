@@ -9,6 +9,8 @@ import { ProductService } from './product/product.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  foo = 1;
+
   constructor(private productService: ProductService, private basketService: BasketService) {}
 
   ngOnInit(): void {

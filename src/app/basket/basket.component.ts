@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Customer } from '../shared/customer.types';
+
 import { BasketService } from './basket.service';
 
 @Component({
@@ -9,5 +11,15 @@ import { BasketService } from './basket.service';
 export class BasketComponent {
   products$ = this.basketService.products$;
 
+  customer: Customer = {
+    name: 'Stéphane',
+    address: '',
+    creditCard: '',
+  };
+
   constructor(private basketService: BasketService) {}
+
+  checkout() {
+    console.log('CHECKOUT!');
+  }
 }

@@ -1,29 +1,39 @@
 <div class="card">
   <div class="card-header">Basket</div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">product.title <span class="label label-primary pull-right">product.price</span></li>
+    <ng-container *ngIf="products$ | async as products">
+      <li *ngFor="let product of products" class="list-group-item">
+        {{ product.title }} <span class="label label-primary pull-right">{{ product.price | currency }}</span>
+      </li>
+    </ng-container>
   </ul>
 </div>
 
 <br />
 
 <div class="card">
-  <div class="card-header">Basket</div>
+  <div class="card-header">Order</div>
   <div class="card-body">
     <form>
       <div class="mb-2">
         <label class="form-label" for="name">Name</label>
-        <input id="name" class="form-control" type="text" />
+        <input [(ngModel)]="customer.name" id="name" name="the-name" class="form-control" type="text" />
       </div>
 
       <div class="mb-2">
         <label class="form-label" for="address">Address</label>
-        <textarea id="address" class="form-control"></textarea>
+        <textarea [(ngModel)]="customer.address" id="address" name="the-address" class="form-control"></textarea>
       </div>
 
       <div class="mb-2">
         <label class="form-label" for="creditCard">Credit card</label>
-        <input id="creditCard" class="form-control" type="text" />
+        <input
+          [(ngModel)]="customer.creditCard"
+          id="creditCard"
+          name="the-credit-card"
+          class="form-control"
+          type="text"
+        />
       </div>
 
       <div class="mt-3">
@@ -32,3 +42,5 @@
     </form>
   </div>
 </div>
+
+<pre>{{ customer | json }}</pre>
