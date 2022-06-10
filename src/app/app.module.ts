@@ -8,9 +8,10 @@ import { APP_TITLE } from './app.token';
 import { MenuComponent } from './menu/menu.component';
 import { ProductComponent } from './product/product.component';
 import { HomeComponent } from './home/home.component';
+import { BasketComponent } from './basket/basket.component';
 
 @NgModule({
-  declarations: [AppComponent, MenuComponent, ProductComponent, HomeComponent],
+  declarations: [AppComponent, MenuComponent, ProductComponent, HomeComponent, BasketComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [
     {
