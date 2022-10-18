@@ -1,20 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-
-import { BasketService } from './basket/basket.service';
-import { ProductService } from './product/product.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  foo = 1;
-
-  constructor(private productService: ProductService, private basketService: BasketService) {}
-
-  ngOnInit(): void {
-    this.productService.fetchProducts().subscribe();
-    this.basketService.fetchBasket().subscribe();
-  }
+export class AppComponent {
+  title = 'shop';
 }
