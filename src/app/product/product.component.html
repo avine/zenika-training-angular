@@ -1,0 +1,12 @@
+<div class="card h-100">
+  <img [src]="product.photo" class="card-img-top" alt="" />
+
+  <div class="card-body">
+    <h3 class="card-title">{{ product.title }} - {{ product.price }}$</h3>
+    <p>{{ product.description }}</p>
+  </div>
+
+  <div class="card-body">
+    <button class="btn btn-primary" (click)="onAddToBasket()">Add to basket</button>
+  </div>
+</div>
