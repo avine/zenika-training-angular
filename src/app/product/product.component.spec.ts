@@ -13,10 +13,31 @@ describe('ProductComponent', () => {
 
     fixture = TestBed.createComponent(ProductComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
+    component.product = {
+      title: 'TITLE',
+      description: 'DESC',
+      photo: 'PHOTO.png',
+      price: 12,
+    };
+
+    fixture.detectChanges();
+
     expect(component).toBeTruthy();
+  });
+
+  it('should bind product description', () => {
+    component.product = {
+      title: 'TITLE',
+      description: 'DESC',
+      photo: 'PHOTO.png',
+      price: 12,
+    };
+
+    fixture.detectChanges();
+
+    expect((fixture.nativeElement as HTMLElement).querySelector('.card-body p')?.textContent).toBe('DESC');
   });
 });
