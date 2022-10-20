@@ -15,8 +15,17 @@
     </div>
   </div>
 
+  <div class="btn-group">
+    <a class="btn btn-primary" [class.active]="sortBy === undefined" (click)="sortBy = undefined">Default order</a>
+    <a class="btn btn-primary" [class.active]="sortBy === 'title'" (click)="sortBy = 'title'">Sort by title</a>
+    <a class="btn btn-primary" [class.active]="sortBy === 'price'" (click)="sortBy = 'price'">Sort by price</a>
+    <a class="btn btn-primary" [class.active]="sortBy === 'stock'" (click)="sortBy = 'stock'">Sort by stock</a>
+  </div>
+
+  <br /><br />
+
   <div class="row text-center">
-    <ng-container *ngFor="let product of products$ | async">
+    <ng-container *ngFor="let product of products$ | async | arraySorter: sortBy">
       <div *ngIf="product.stock > 0" class="col-md-3 col-sm-6 product-item">
         <app-product [product]="product" (addToBasket)="addToBasket($event)"></app-product>
       </div>

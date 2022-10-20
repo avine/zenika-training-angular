@@ -18,6 +18,8 @@ export class AppComponent implements OnInit {
 
   total$ = this.basketService.total$;
 
+  sortBy?: keyof Product;
+
   constructor(
     private productService: ProductService,
     private basketService: BasketService,
