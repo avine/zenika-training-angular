@@ -1,21 +1,26 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, map, tap } from 'rxjs';
+import { environment } from '../../environments/environment';
 import { Product } from '../product/product.types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BasketService {
-  private basket: Product[] = [];
+  private readonly basketUrl = `${environment.apiUrl}/basket`;
 
-  getBasket() {
-    return this.basket;
-  }
+  basket$ = new BehaviorSubject<Product[]>([]);
 
-  getTotal() {
-    return this.basket.reduce((total, product) => total + product.price, 0);
+  total$ = this.basket$.pipe(map((basket) => basket.reduce((total, product) => total + product.price, 0)));
+
+  constructor(private httpClient: HttpClient) {}
+
+  fetch() {
+    return this.httpClient.get<Product[]>(this.basketUrl).pipe(tap((basket) => this.basket$.next(basket)));
   }
 
   addProduct(product: Product) {
-    this.basket = [...this.basket, { ...product }];
+    return this.httpClient.post<Product>(this.basketUrl, product);
   }
 }

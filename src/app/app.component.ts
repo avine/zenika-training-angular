@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { APP_NAME } from './app.token';
 import { BasketService } from './basket/basket.service';
 import { ProductService } from './product/product.service';
@@ -9,20 +9,14 @@ import { Product } from './product/product.types';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   protected title = 'shop';
 
-  protected get products(): Product[] {
-    return this.productService.getProducts();
-  }
+  products$ = this.productService.products$;
 
-  protected get basket(): Product[] {
-    return this.basketService.getBasket();
-  }
+  basket$ = this.basketService.basket$;
 
-  protected get total() {
-    return this.basketService.getTotal();
-  }
+  total$ = this.basketService.total$;
 
   constructor(
     private productService: ProductService,
@@ -30,8 +24,16 @@ export class AppComponent {
     @Inject(APP_NAME) protected appName: string
   ) {}
 
+  ngOnInit(): void {
+    this.refreshData();
+  }
+
   protected addToBasket(product: Product) {
-    this.basketService.addProduct(product);
-    this.productService.decreaseStock(product);
+    this.basketService.addProduct(product).subscribe(() => this.refreshData());
+  }
+
+  private refreshData() {
+    this.productService.fetch().subscribe();
+    this.basketService.fetch().subscribe();
   }
 }
