@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { zip } from 'rxjs';
 import { APP_NAME } from './app.token';
 import { BasketService } from './basket/basket.service';
 import { ProductService } from './product/product.service';
@@ -27,15 +28,14 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.refreshData();
+    this.fetchData();
+  }
+
+  private fetchData() {
+    zip([this.productService.fetch(), this.basketService.fetch()]).subscribe();
   }
 
   protected addToBasket(product: Product) {
-    this.basketService.addProduct(product).subscribe(() => this.refreshData());
-  }
-
-  private refreshData() {
-    this.productService.fetch().subscribe();
-    this.basketService.fetch().subscribe();
+    this.basketService.addProduct(product).subscribe(() => this.productService.decreaseLocalStock(product));
   }
 }

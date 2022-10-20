@@ -21,6 +21,10 @@ export class BasketService {
   }
 
   addProduct(product: Product) {
-    return this.httpClient.post<Product>(this.basketUrl, product);
+    return this.httpClient.post<Product>(this.basketUrl, product).pipe(tap(() => this.addLocalProduct(product)));
+  }
+
+  private addLocalProduct(product: Product) {
+    this.basket$.next([...this.basket$.value, product]);
   }
 }

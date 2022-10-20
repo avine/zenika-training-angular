@@ -17,4 +17,14 @@ export class ProductService {
   fetch() {
     return this.httpClient.get<Product[]>(this.productsUrl).pipe(tap((products) => this.products$.next(products)));
   }
+
+  decreaseLocalStock({ id }: Product) {
+    const products = this.products$.value.map((_product) => {
+      if (_product.id === id) {
+        return { ..._product, stock: _product.stock - 1 };
+      }
+      return _product;
+    });
+    this.products$.next(products);
+  }
 }
