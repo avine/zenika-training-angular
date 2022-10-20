@@ -1,40 +1,9 @@
 <app-menu></app-menu>
 
 <div class="container">
-  <header class="p-5 mb-4 bg-light rounded-3">
-    <h1>{{ appName }}</h1>
-    <p>Your basket amounts to {{ total$ | async | currency }}</p>
-    <p><a class="btn btn-primary btn-large">See my basket</a></p>
-  </header>
+  <router-outlet></router-outlet>
 
   <hr />
-
-  <div class="row">
-    <div class="col-lg-12">
-      <h2>Last products</h2>
-    </div>
-  </div>
-
-  <div class="btn-group">
-    <a class="btn btn-primary" [class.active]="sortBy === undefined" (click)="sortBy = undefined">Default order</a>
-    <a class="btn btn-primary" [class.active]="sortBy === 'title'" (click)="sortBy = 'title'">Sort by title</a>
-    <a class="btn btn-primary" [class.active]="sortBy === 'price'" (click)="sortBy = 'price'">Sort by price</a>
-    <a class="btn btn-primary" [class.active]="sortBy === 'stock'" (click)="sortBy = 'stock'">Sort by stock</a>
-  </div>
-
-  <br /><br />
-
-  <div class="row text-center">
-    <ng-container *ngFor="let product of products$ | async | arraySorter: sortBy">
-      <div *ngIf="product.stock > 0" class="col-md-3 col-sm-6 product-item">
-        <app-product [product]="product" (addToBasket)="addToBasket($event)"></app-product>
-      </div>
-    </ng-container>
-  </div>
-
-  <hr />
-
-  <pre>{{ basket$ | async | json }}</pre>
 
   <footer>Copyright &copy; Your Website 2022</footer>
 </div>

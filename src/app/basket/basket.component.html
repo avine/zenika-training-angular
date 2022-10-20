@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="card-header">Basket</div>
+
+  <ul class="list-group list-group-flush">
+    <ng-container *ngIf="basket$ | async as basket">
+      <li *ngFor="let product of basket" class="list-group-item">
+        {{ product.title }}
+        <span class="label label-primary pull-right">{{ product.price | currency }}</span>
+      </li>
+
+      <li *ngIf="basket.length === 0" class="list-group-item"><em>Your basket is empty.</em></li>
+    </ng-container>
+  </ul>
+</div>

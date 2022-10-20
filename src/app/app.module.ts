@@ -1,15 +1,18 @@
 import { HttpClientModule } from '@angular/common/http';
 import { DEFAULT_CURRENCY_CODE, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { APP_NAME } from './app.token';
+import { BasketComponent } from './basket/basket.component';
+import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
 import { ProductComponent } from './product/product.component';
 import { ArraySorterPipe } from './shared/array-sorter.pipe';
 
 @NgModule({
-  declarations: [AppComponent, MenuComponent, ProductComponent, ArraySorterPipe],
-  imports: [BrowserModule, HttpClientModule],
+  declarations: [AppComponent, MenuComponent, ProductComponent, ArraySorterPipe, HomeComponent, BasketComponent],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [
     {
       provide: DEFAULT_CURRENCY_CODE,
