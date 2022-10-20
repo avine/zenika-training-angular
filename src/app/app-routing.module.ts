@@ -15,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'basket',
-    component: BasketComponent,
+    loadChildren: () => import('./basket/basket.module').then((m) => m.BasketModule),
   },
 ];
 
