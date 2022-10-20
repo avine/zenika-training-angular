@@ -4,13 +4,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { APP_NAME } from './app.token';
+import { DetailComponent } from './detail/detail.component';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
 import { ProductComponent } from './product/product.component';
 import { ArraySorterPipe } from './shared/array-sorter.pipe';
 
 @NgModule({
-  declarations: [AppComponent, MenuComponent, ProductComponent, ArraySorterPipe, HomeComponent],
+  declarations: [AppComponent, MenuComponent, ProductComponent, ArraySorterPipe, HomeComponent, DetailComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [
     {

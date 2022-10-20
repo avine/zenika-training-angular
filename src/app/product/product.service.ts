@@ -18,6 +18,10 @@ export class ProductService {
     return this.httpClient.get<Product[]>(this.productsUrl).pipe(tap((products) => this.products$.next(products)));
   }
 
+  fetchProductDetails(id: string) {
+    return this.httpClient.get<Product>(`${this.productsUrl}/${id}`);
+  }
+
   decreaseLocalStock({ id }: Product) {
     const products = this.products$.value.map((_product) => {
       if (_product.id === id) {
