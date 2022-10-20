@@ -16,21 +16,16 @@
   </div>
 
   <div class="row text-center">
-    <div class="col-md-3 col-sm-6 product-item">
-      <app-product [product]="products[0]" (addToBasket)="addToBasket($event)"></app-product>
-    </div>
-    <div class="col-md-3 col-sm-6 product-item">
-      <app-product [product]="products[1]" (addToBasket)="addToBasket($event)"></app-product>
-    </div>
-    <div class="col-md-3 col-sm-6 product-item">
-      <app-product [product]="products[2]" (addToBasket)="addToBasket($event)"></app-product>
-    </div>
-    <div class="col-md-3 col-sm-6 product-item">
-      <app-product [product]="products[3]" (addToBasket)="addToBasket($event)"></app-product>
-    </div>
+    <ng-container *ngFor="let product of products">
+      <div *ngIf="product.stock > 0" class="col-md-3 col-sm-6 product-item">
+        <app-product [product]="product" (addToBasket)="addToBasket($event)"></app-product>
+      </div>
+    </ng-container>
   </div>
 
   <hr />
+
+  <pre>{{ basket | json }}</pre>
 
   <footer>Copyright &copy; Your Website 2022</footer>
 </div>

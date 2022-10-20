@@ -1,4 +1,4 @@
-<div class="card h-100">
+<div class="card h-100" [ngClass]="{ highlight: product.stock === 1 }">
   <img [src]="product.photo" class="card-img-top" alt="" />
 
   <div class="card-body">
