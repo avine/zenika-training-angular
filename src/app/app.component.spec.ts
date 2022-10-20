@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
-import { ProductComponent } from './product/product.component';
+import { ProductComponent } from './shared/components/product/product.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {

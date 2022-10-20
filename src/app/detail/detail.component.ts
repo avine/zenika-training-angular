@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ReplaySubject, Subscription, switchMap } from 'rxjs';
-import { ProductService } from '../product/product.service';
-import { Product } from '../product/product.types';
+import { Subscription, switchMap } from 'rxjs';
+import { ProductService } from '../shared/components/product/product.service';
+import { Product } from '../shared/components/product/product.types';
+
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',

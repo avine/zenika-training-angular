@@ -7,8 +7,8 @@ import { APP_NAME } from './app.token';
 import { DetailComponent } from './detail/detail.component';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
-import { ProductComponent } from './product/product.component';
-import { ArraySorterPipe } from './shared/array-sorter.pipe';
+import { ProductComponent } from './shared/components/product/product.component';
+import { ArraySorterPipe } from './shared/pipes/array-sorter.pipe';
 
 @NgModule({
   declarations: [AppComponent, MenuComponent, ProductComponent, ArraySorterPipe, HomeComponent, DetailComponent],

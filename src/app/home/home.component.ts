@@ -2,8 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { zip } from 'rxjs';
 import { APP_NAME } from '../app.token';
 import { BasketService } from '../basket/basket.service';
-import { ProductService } from '../product/product.service';
-import { Product } from '../product/product.types';
+import { ProductService } from '../shared/components/product/product.service';
+import { Product } from '../shared/components/product/product.types';
 
 @Component({
   selector: 'app-home',
