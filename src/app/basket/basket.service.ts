@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Product } from '../shared/components/product/product.types';
+import { Customer } from './basket.types';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +25,17 @@ export class BasketService {
     return this.httpClient.post<Product>(this.basketUrl, product).pipe(tap(() => this.addLocalProduct(product)));
   }
 
+  checkout(customer: Customer) {
+    return this.httpClient
+      .post<{ orderNumber: number }>(`${this.basketUrl}/confirm`, customer)
+      .pipe(tap(() => this.resetLocalProduct()));
+  }
+
   private addLocalProduct(product: Product) {
     this.basket$.next([...this.basket$.value, product]);
+  }
+
+  private resetLocalProduct() {
+    this.basket$.next([]);
   }
 }
