@@ -9,6 +9,8 @@ import { Product } from './product.types';
 export class ProductComponent {
   @Input() product!: Product;
 
+  @Input() hasLink = false;
+
   @Output() addToBasket = new EventEmitter<Product>();
 
   protected onAddToBasket() {

@@ -24,7 +24,7 @@
 <div class="row text-center">
   <ng-container *ngFor="let product of products$ | async | arraySorter: sortBy">
     <div *ngIf="product.stock > 0" class="col-md-3 col-sm-6 product-item">
-      <app-product [product]="product" (addToBasket)="addToBasket($event)"></app-product>
+      <app-product [product]="product" [hasLink]="true" (addToBasket)="addToBasket($event)"></app-product>
     </div>
   </ng-container>
 </div>

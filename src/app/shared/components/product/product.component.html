@@ -4,7 +4,7 @@
   <div class="card-body">
     <h3 class="card-title">{{ product.title }} - {{ product.price | currency }}</h3>
     <p>{{ product.description }}</p>
-    <p><a [routerLink]="'/product/' + product.id">See details</a></p>
+    <p *ngIf="hasLink"><a [routerLink]="'/product/' + product.id">See details</a></p>
   </div>
 
   <div class="card-body">
