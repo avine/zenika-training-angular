@@ -14,10 +14,12 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    title: 'Home',
   },
   {
     path: `product/:${DETAIL_PARAM_KEY}`,
     component: DetailComponent,
+    title: 'Detail',
     resolve: {
       [DETAIL_DATA_KEY]: DetailResolver,
     },
@@ -25,6 +27,7 @@ const routes: Routes = [
   {
     path: 'basket',
     loadChildren: () => import('./basket/basket.module').then((m) => m.BasketModule),
+    title: 'Basket',
   },
 ];
 
