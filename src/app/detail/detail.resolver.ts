@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ProductService } from '../shared/components/product/product.service';
-import { Product } from '../shared/components/product/product.types';
+import { ProductService } from '../product/product.service';
+import { Product } from '../product/product.types';
 import { DETAIL_PARAM_KEY } from './detail.config';
 
 @Injectable({

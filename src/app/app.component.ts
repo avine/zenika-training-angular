@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { zip } from 'rxjs';
 import { BasketService } from './basket/basket.service';
-import { ProductService } from './shared/components/product/product.service';
+import { ProductService } from './product/product.service';
 
 @Component({
   selector: 'app-root',

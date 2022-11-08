@@ -7,7 +7,7 @@ import { APP_NAME } from './app.token';
 import { DetailComponent } from './detail/detail.component';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
-import { ProductComponent } from './shared/components/product/product.component';
+import { ProductComponent } from './product/product.component';
 import { ArraySorterPipe } from './shared/pipes/array-sorter.pipe';
 
 @NgModule({

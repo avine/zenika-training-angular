@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
-import { Product } from '../shared/components/product/product.types';
+import { Product } from '../product/product.types';
 import { DETAIL_DATA_KEY } from './detail.config';
 
 @Component({
