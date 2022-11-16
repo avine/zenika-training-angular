@@ -13,18 +13,12 @@ export class BasketComponent {
 
   protected basket$ = this.basketService.basket$;
 
-  protected customer: Customer = {
-    name: '',
-    address: '',
-    creditCard: '',
-  };
-
   protected orderNumber?: number;
 
   constructor(private basketService: BasketService) {}
 
   onSubmit() {
     this.checkoutForm.form.disable();
-    this.basketService.checkout(this.customer).subscribe(({ orderNumber }) => (this.orderNumber = orderNumber));
+    this.basketService.checkout(this.checkoutForm.value as Customer).subscribe(({ orderNumber }) => (this.orderNumber = orderNumber));
   }
 }

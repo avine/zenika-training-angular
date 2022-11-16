@@ -22,7 +22,7 @@
         <input
           class="form-control"
           [ngClass]="{ 'is-invalid': name.invalid && name.touched, 'is-valid': name.valid }"
-          [(ngModel)]="customer.name"
+          ngModel
           name="name"
           type="text"
           required
@@ -36,7 +36,7 @@
         <input
           class="form-control"
           [ngClass]="{ 'is-invalid': address.invalid && address.touched, 'is-valid': address.valid }"
-          [(ngModel)]="customer.address"
+          ngModel
           name="address"
           type="text"
           required
@@ -50,7 +50,7 @@
         <input
           class="form-control"
           [ngClass]="{ 'is-invalid': creditCard.invalid && creditCard.touched, 'is-valid': creditCard.valid }"
-          [(ngModel)]="customer.creditCard"
+          ngModel
           name="creditCard"
           type="text"
           required
